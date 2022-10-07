@@ -1,4 +1,5 @@
 Teste inicial com 30.000 Execuções cada.
+
 rules : Query OK (execution time: 1.093 sec; total time: 1.156 sec)
 
 Trigger : Query OK (execution time: 1.265 sec; total time: 1.360 sec)

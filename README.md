@@ -1,4 +1,5 @@
 Execute em bancos separados o script de cada pasta e execute a função de teste => SELECT public.teste_performance_insert_row() ;
+
 Teste inicial com 30.000 Execuções cada.
 
 rules : Query OK (execution time: 1.093 sec; total time: 1.156 sec)

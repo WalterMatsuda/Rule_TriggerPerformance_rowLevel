@@ -30,41 +30,30 @@ begin
     insert into auditoria.aud_cliente 
     select nextval('auditoria.aud_cliente_seq'::text), 
     'U', now(), 
-    case when inet_client_addr() is null then 'localhost' 
-    else inet_client_addr()::varchar ||':'||inet_client_port() end, 
+    inet_client_addr(), 
     session_user, NEW.*; 
-    if not found then 
-      Raise Notice 'Ocorreu um erro durante a auditoria de dados!'; 
-      Raise Notice 'SQLSTATE: %', SQLSTATE; 
-      Raise Notice 'ERROR: %', SQLERRM; 
+   
+      
       return null; 
-    end if; 
+  
   elsif TG_OP = 'INSERT' then 
     insert into auditoria.aud_cliente 
     select nextval('auditoria.aud_cliente_seq'::text), 
     'I', now(), 
-    case when inet_client_addr() is null then 'localhost' 
-    else inet_client_addr()::varchar ||':'||inet_client_port() end, 
+    inet_client_addr(), 
     session_user, NEW.*; 
     if not found then 
-      Raise Notice 'Ocorreu um erro durante a auditoria de dados!'; 
-      Raise Notice 'SQLSTATE: %', SQLSTATE; 
-      Raise Notice 'ERROR: %', SQLERRM; 
+  
       return null; 
-    end if; 
   else 
     insert into auditoria.aud_cliente 
     select nextval('auditoria.aud_cliente_seq'::text), 
     'D', now(), 
-    case when inet_client_addr() is null then 'localhost' 
-    else inet_client_addr()::varchar ||':'||inet_client_port() end, 
+    inet_client_addr(), 
     session_user, OLD.*; 
     if not found then 
-      Raise Notice 'Ocorreu um erro durante a auditoria de dados!'; 
-      Raise Notice 'SQLSTATE: %', SQLSTATE; 
-      Raise Notice 'ERROR: %', SQLERRM; 
+  
       return null; 
-    end if; 
   end if; 
 
 

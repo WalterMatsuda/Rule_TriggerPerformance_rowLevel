@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS public.cliente (
 CREATE SEQUENCE IF NOT EXISTS auditoria.aud_cliente_seq; 
 CREATE TABLE IF NOT EXISTS auditoria.aud_cliente (
   idaud BIGINT DEFAULT nextval('auditoria.aud_cliente_seq'::regclass),
-  tipoaud VARCHAR(1),
-  dataaud TIMESTAMP WITHOUT TIME ZONE,
-  hostaud VARCHAR(50),
-  loginaud VARCHAR(50),
+  operacao VARCHAR(1),
+  data_auditoria TIMESTAMP WITHOUT TIME ZONE,
+  host_auditoria VARCHAR(50),
+  login_auditoria VARCHAR(50),
   id BIGINT,
   nome VARCHAR(50),
   email VARCHAR(50),
